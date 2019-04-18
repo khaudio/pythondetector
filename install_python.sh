@@ -3,6 +3,11 @@
 REQUIRED="3.7.0"
 DETECTORPATH=$PWD
 
+if [[ ! -d $DETECTORPATH/bin ]]; then
+    cd $DETECTORPATH
+    make
+fi
+
 if [[ $($DETECTORPATH/bin/pythondetector $REQUIRED) != "minimum version installed" ]]; then
     echo "Installing python"
     mkdir -p $DETECTORPATH/temp && cd $DETECTORPATH/temp
